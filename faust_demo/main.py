@@ -45,13 +45,13 @@ async def format_0x03015100(msgs: StreamT[Tlg0x03015100]) -> AsyncIterable[Tlg0x
 
 
 @app.page("/machines")
-async def view_process_by_machine_table(web, request):
+async def get_machines(web, request):
     return web.json({"machines": [v for v in reformatted]})
 
 
 @app.page("/machines/{machine_id}/process")
 @app.table_route(table=reformatted, match_info="machine_id")
-async def view_process_by_machine_table(web, request, machine_id: str):
+async def get_process_by_machine(web, request, machine_id: str):
     return web.json({"process": reformatted.get(int(machine_id))})
 
 
