@@ -2,7 +2,6 @@ from typing import Optional
 from pydantic import BaseSettings, validator, SecretStr
 from typing import Optional, Dict, Any
 import faust
-from faust.types.auth import AuthProtocol
 import ssl
 
 
