@@ -55,5 +55,11 @@ async def get_process_by_machine(web, request, machine_id: str):
     return web.json({"process": reformatted.get(int(machine_id))})
 
 
+@app.page("/machines/{machine_id}/process/table")
+@app.table_route(table=reformatted, match_info="machine_id")
+async def get_process_by_machine(web, request, machine_id: str):
+    return web.html(as_html_table(app, web, request, reformatted, machine_id))
+
+
 if __name__ == "__main__":
     app.main()
